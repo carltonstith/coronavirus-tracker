@@ -18,12 +18,15 @@ Node.js
 Angular-Material
 Chart.js
 ng2-charts
+Nodemon
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
 
-## Development server
+## Back-End Development server
+From root, run `nodemon` for a backend server. Navigate to `localhost:3000/` for the API endpoints.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Front-End Development server
+From the client folder, run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
