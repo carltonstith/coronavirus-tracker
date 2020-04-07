@@ -13,12 +13,6 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  // registerUser(user) {
-  //   let headers = new HttpHeaders();
-  //   headers.append('Content-Type', 'application/json');
-  //   return this.http.post('http://localhost:3000/users/register', user, {headers:headers})
-  //     .map(res => res.json());
-  // }
   registerUser(user): Observable<any> {
     let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
     return this.http.post<any>('http://localhost:3000/users/register', user, httpOptions);
@@ -31,11 +25,25 @@ export class AuthService {
     return this.http.post<any>('http://localhost:3000/users/authenticate', user, httpOptions);
   }
 
+  getProfile(): Observable<any> {
+    this.loadToken();
+    let httpOptions = { headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.authToken
+    }) };
+    return this.http.get<any>('http://localhost:3000/users/profile', httpOptions);
+  }
+
   storeUserData(token, user) {
     localStorage.setItem('id_token', token);
     localStorage.setItem('user', JSON.stringify(user));
     this.authToken = token;
     this.user = user;
+  }
+
+  loadToken() {
+    const token = localStorage.getItem('id_token');
+    this.authToken = token;
   }
 
   logout() {
