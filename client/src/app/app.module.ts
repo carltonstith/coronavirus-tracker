@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material.module';
 import { HttpClientModule } from '@angular/common/http';
+import { JwtModule } from "@auth0/angular-jwt";
 
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
@@ -35,7 +36,22 @@ import { ProfileComponent } from './components/profile/profile.component';
     BrowserAnimationsModule,
     MaterialModule,
     FlashMessagesModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    // JwtModule.forRoot({
+    //   config: {
+    //     throwNoTokenError: false,
+    //     tokenGetter: AuthService.loadToken,
+    //     whitelistedDomains: ['localhost:4567']
+    //   }
+    // })
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('id_token')
+        }
+        //tokenGetter: this.loggedIn
+      }
+    })
   ],
   providers: [ValidateService, AuthService],
   bootstrap: [AppComponent]

@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-// import 'rxjs/add/operator/map';
-import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +10,7 @@ export class AuthService {
   authToken: any;
   user: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public jwtHelper: JwtHelperService) { }
 
   registerUser(user): Observable<any> {
     let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
@@ -45,6 +44,28 @@ export class AuthService {
     const token = localStorage.getItem('id_token');
     this.authToken = token;
   }
+
+  loggedIn(){
+    const token: any = localStorage.getItem('id_token');
+    if(token == null || token == undefined) {
+      return false;
+    } else {
+      return true;
+    }
+
+    // if(this.authToken != null){return true;}
+    // else{return false;}
+
+    //   if (localStorage.id_token == undefined ){
+    //    console.log('Hello');
+    //    return false
+    //   } else {
+    //   console.log('Goodbye');
+    // const helper = new JwtHelperService();
+    // console.log(helper.isTokenExpired(localStorage.id_token));
+    //   return helper.isTokenExpired(localStorage.id_token); // other people are putting 'id_token'' here but it didn't work for me so i just put the localStorage item
+    //   }
+   }
 
   logout() {
     this.authToken = null;
