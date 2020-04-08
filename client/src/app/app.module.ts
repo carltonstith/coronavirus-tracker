@@ -37,19 +37,11 @@ import { ProfileComponent } from './components/profile/profile.component';
     MaterialModule,
     FlashMessagesModule.forRoot(),
     HttpClientModule,
-    // JwtModule.forRoot({
-    //   config: {
-    //     throwNoTokenError: false,
-    //     tokenGetter: AuthService.loadToken,
-    //     whitelistedDomains: ['localhost:4567']
-    //   }
-    // })
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
           return localStorage.getItem('id_token')
         }
-        //tokenGetter: this.loggedIn
       }
     })
   ],
