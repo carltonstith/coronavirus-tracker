@@ -59,9 +59,17 @@ router.post('/authenticate', (req, res, next) => {
 
 });
 
-// Profile
+// Get a users Profile
 router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res, next) => {
   res.json({user: req.user})
+});
+
+// Get a users Profile By Id
+router.get('/:id', (req, res, next) => {
+  User.findById(req.params.id, function(err, user) {
+    if (err) return next(err);
+    res.json(user);
+  });
 });
 
 module.exports = router;

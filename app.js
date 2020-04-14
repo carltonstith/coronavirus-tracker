@@ -24,6 +24,8 @@ const app = express();
 
 // Bring in the Users from the Routes Folder
 const users = require('./routes/users');
+// Bring in the Cases from the Routes Folder
+const cases = require('./routes/cases');
 
 // Port Number
 const port = 3000;
@@ -44,6 +46,7 @@ app.use(passport.session());
 require('./config/passport')(passport);
 
 app.use('/users', users);
+app.use('/cases', cases);
 
 // Index Route
 app.get('/', (req, res) => {
