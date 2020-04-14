@@ -5,7 +5,11 @@ const Cases = require('../models/cases');
 
 // GET All Cases
 router.get('/', (req, res, next) => {
-  res.send('CASES');
+  //res.send('CASES');
+  Cases.find(function(err, cases) {
+    if(err) return next(err);
+    res.json(cases);
+  });
 });
 
 // Get Case By Id
@@ -16,7 +20,7 @@ router.get('/:id', (req, res, next) => {
   });
 });
 
-// Post Case
+// Post a new Case
 router.post('/', function(req, res, next) {
   Cases.create(req.body, function (err, cases) {
     if (err) return next(err);
@@ -24,8 +28,22 @@ router.post('/', function(req, res, next) {
   });
 });
 
-// Update Case
+// Update a Single Case
+router.put('/:id', function(req, res, next) {
+  Cases.findByIdAndUpdate(req.params.id, {
+    $set: req.body
+  }, function(err, cases) {
+    if (err) return next(err);
+    res.json(cases);
+  });
+});
 
-// Delete Case
+// Delete a Case By Id
+router.delete('/:id', function(req, res, next) {
+  Cases.findByIdAndDelete(req.params.id, function(err, cases) {
+    if (err) return next(err);
+    res.json(cases);
+  });
+});
 
 module.exports = router;
