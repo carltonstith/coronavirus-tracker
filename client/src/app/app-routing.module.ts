@@ -8,7 +8,8 @@ import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CasesComponent } from './components/cases/cases.component';
-
+import { CasesAddComponent } from './components/cases-add/cases-add.component';
+import { CasesDetailsComponent } from './components/cases-details/cases-details.component';
 
 const routes: Routes = [
   {
@@ -26,17 +27,27 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate:[AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'profile',
     component: ProfileComponent,
-    canActivate:[AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'cases',
     component: CasesComponent,
-    canActivate:[AuthGuard]
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'cases-add',
+    component: CasesAddComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'case-details',
+    component: CasesDetailsComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

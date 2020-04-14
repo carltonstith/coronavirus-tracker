@@ -1,0 +1,17 @@
+button {
+  margin-bottom: 1em;
+}
+.btn-primary {
+  background: #238003;
+  border-color: #238003;
+}
+.btn-secondary {
+  color: #fff;
+  background-color: #238003;
+  border-color: #238003;
+}
+button:nth-last-child(2) {
+  background: #238003;
+  margin-left: 1em;
+  border-color: #238003;
+}

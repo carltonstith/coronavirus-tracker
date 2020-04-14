@@ -20,6 +20,9 @@ import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CasesComponent } from './components/cases/cases.component';
+import { CasesAddComponent } from './components/cases-add/cases-add.component';
+import { CasesDetailsComponent } from './components/cases-details/cases-details.component';
+import { CasesEditComponent } from './components/cases-edit/cases-edit.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { CasesComponent } from './components/cases/cases.component';
     HomeComponent,
     DashboardComponent,
     ProfileComponent,
-    CasesComponent
+    CasesComponent,
+    CasesAddComponent,
+    CasesDetailsComponent,
+    CasesEditComponent
   ],
   imports: [
     BrowserModule,
