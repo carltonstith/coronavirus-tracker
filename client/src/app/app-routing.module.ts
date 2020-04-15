@@ -45,8 +45,9 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'case-details',
+    path: 'cases-details/:id',
     component: CasesDetailsComponent,
+    data: { title: 'Case Details' },
     canActivate: [AuthGuard]
   }
 ];

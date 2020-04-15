@@ -9,7 +9,9 @@ import { Cases } from '../../cases';
 })
 export class CasesComponent implements OnInit {
 
+  displayedColums: string[] = ['name', 'age', 'status'];
   data: Cases[] = [];
+  isLoadingResults = true;
 
   constructor(private caseService:CaseService) { }
 
@@ -18,8 +20,10 @@ export class CasesComponent implements OnInit {
     .subscribe((res: any) => {
       this.data = res;
       console.log(this.data);
+      this.isLoadingResults = false;
     }, err => {
       console.log(err);
+      this.isLoadingResults = false;
     })
   }
 

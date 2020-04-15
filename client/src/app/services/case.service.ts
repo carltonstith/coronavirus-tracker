@@ -10,7 +10,8 @@ const httpOptions = {
     'Access-Control-Allow-Origin': 'localhost:3000/cases/'
   })
 };
-const apiUrl = 'http://localhost:3000/cases/'
+const apiUrl = 'http://localhost:3000/cases'
+// const apiUrl = '/cases/'
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,7 @@ export class CaseService {
 
   constructor(private httpClient:HttpClient) { }
 
+  // Error Handling
   private handleError<T> (operation = 'operation', result?: T) {
     return (error:any): Observable<T> => {
       console.error(error);
@@ -39,8 +41,16 @@ export class CaseService {
     return this.httpClient.get<Cases[]>(`${apiUrl}`, httpOptions);
   }
 
+  getCasesById(id: string): Observable<Cases> {
+    const url = `${apiUrl}/${id}`;
+    return this.httpClient.get<Cases>(url).pipe(
+      tap(_ => console.log(`fetched cases id=${id}`)),
+      catchError(this.handleError<Cases>(`getCasesById id=${id}`))
+    );
+  }
+
   // Add Cases
   addCases(cases: Cases): Observable<Cases> {
-    return this.httpClient.post<Cases>(apiUrl, cases, httpOptions);
+    return this.httpClient.post<Cases>(`${apiUrl}`, cases, httpOptions);
   }
 }
