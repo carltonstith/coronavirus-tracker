@@ -1,7 +1,7 @@
 <div class="container">
   <h2>Coronavirus Case List</h2>
-  <button type="button" class="btn btn-primary"><a class="btn btn-secondary" [routerLink]="['/cases-add']" role="button">Add a case &raquo;</a></button>
-  <button type="button" class="btn btn-primary"><a class="btn btn-secondary" href="#" role="button">Statistics &raquo;</a></button>
+  <button type="button" class="btn btn-primary"><a class="btn btn-secondary" [routerLink]="['/cases-add']" role="button">Add new case <i class="far fa-user"></i></a></button>
+  <button type="button" class="btn btn-primary"><a class="btn btn-secondary" [routerLink]="['/statistics']" role="button">Statistics <i class="far fa-chart-bar"></i></a></button>
   <div>
     <table class="table table-striped">
       <thead>
@@ -29,7 +29,7 @@
           <td>{{ data.country }}</td>
           <td>{{ data.status }}</td>
           <td>
-            <a [routerLink]="['/cases-details/id']">
+            <a [routerLink]="['/cases-details/', data._id]">
               <i class="fas fa-info"></i>
             </a>
           </td>

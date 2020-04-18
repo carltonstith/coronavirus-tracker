@@ -1,1 +1,42 @@
-<p>cases-edit works!</p>
+<div class="container">
+  <h2>Edit case</h2>
+  <div>
+    <form [formGroup]="casesForm" (ngSubmit)="onEditCaseSubmit()">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" placeholder="Name" [(ngModel)]="name" formControlName="name">
+      </div>
+      <div class="form-group">
+        <label>Gender</label>
+        <select formControlName="gender">
+          <option *ngFor="let gl of genderList" [value]="gl">
+            {{ gl }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Age</label>
+        <input type="number" class="form-control" placeholder="Age" [(ngModel)]="age" formControlName="age">
+      </div>
+      <div class="form-group">
+        <label>Address</label>
+        <input type="text" class="form-control" placeholder="Address" [(ngModel)]="address" formControlName="address">
+      </div>
+      <div class="form-group">
+        <label>City</label>
+        <input type="text" class="form-control" placeholder="City" [(ngModel)]="city" formControlName="city">
+      </div>
+      <div class="form-group">
+        <label>Country</label>
+        <input type="text" class="form-control" placeholder="Country" [(ngModel)]="country" formControlName="country">
+      </div>
+      <div class="form-group">
+        <label>Status</label>
+        <input type="text" class="form-control" placeholder="Status" [(ngModel)]="status" formControlName="status">
+      </div>
+      <input type="submit" value="Edit" class="btn btn-primary">
+    </form>
+  </div>
+</div>
+
+

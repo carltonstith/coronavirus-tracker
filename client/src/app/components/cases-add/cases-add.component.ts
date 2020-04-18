@@ -57,7 +57,6 @@ export class CasesAddComponent implements OnInit {
         console.log(err);
         this.isLoadingResults = false;
       });
-
   }
 
 }

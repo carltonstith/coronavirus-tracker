@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CaseService } from '../../services/case.service';
 import { Cases } from '../../cases';
-import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-cases-details',
@@ -11,7 +10,7 @@ import { ThrowStmt } from '@angular/compiler';
 })
 export class CasesDetailsComponent implements OnInit {
 
-  cases: Cases = {
+  data: Cases = {
     _id: '',
     name: '',
     gender: '',
@@ -26,29 +25,18 @@ export class CasesDetailsComponent implements OnInit {
 
   constructor(private route:ActivatedRoute, private caseService:CaseService, private router:Router) { }
 
-  ngOnInit(): void {
-    this.getCasesDetails(this.route.snapshot.params.id);
+  ngOnInit() {
+    this.getCaseDetails(this.route.snapshot.params['id']);
+    //debugger
   }
 
-  getCasesDetails(id: string) {
-    this.caseService.getCasesById(id)
-      .subscribe((data: any) => {
-        this.cases = data;
-        console.log(this.cases);
+  getCaseDetails(id) {
+    this.caseService.getCase(id)
+      .subscribe(data => {
+        this.data = data;
+        console.log(data);
         this.isLoadingResults = false;
       });
-  }
-
-  deleteCases(id: any) {
-    this.isLoadingResults = true;
-    this.caseService.deleteCases(id)
-      .subscribe(res => {
-        this.isLoadingResults = false;
-        this.router.navigate(['/cases']);
-      }, (err) => {
-        console.log(err);
-        this.isLoadingResults = false;
-      })
   }
 
 }

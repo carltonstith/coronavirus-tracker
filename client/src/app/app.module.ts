@@ -23,6 +23,7 @@ import { CasesComponent } from './components/cases/cases.component';
 import { CasesAddComponent } from './components/cases-add/cases-add.component';
 import { CasesDetailsComponent } from './components/cases-details/cases-details.component';
 import { CasesEditComponent } from './components/cases-edit/cases-edit.component';
+import { StatisticsComponent } from './components/statistics/statistics.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { CasesEditComponent } from './components/cases-edit/cases-edit.component
     CasesComponent,
     CasesAddComponent,
     CasesDetailsComponent,
-    CasesEditComponent
+    CasesEditComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,

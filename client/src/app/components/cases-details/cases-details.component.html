@@ -1,1 +1,46 @@
-<p>cases-details works!</p>
+<div class="container">
+  <h2>Coronavirus Case Details</h2>
+  <button type="button" class="btn btn-primary"><a class="btn btn-secondary" [routerLink]="['/cases-edit', data._id]" role="button">Edit this case <i class="far fa-edit"></i></a></button>
+  <button type="button" class="btn btn-primary"><a class="btn btn-secondary" [routerLink]="['/statistics']" role="button">Statistics <i class="far fa-chart-bar"></i></a></button>
+  <div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Age</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>Country</th>
+          <th>Status</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>{{ data._id }}</th>
+          <td>{{ data.name }}</td>
+          <td>{{ data.gender }}</td>
+          <td>{{ data.age }}</td>
+          <td>{{ data.address }}</td>
+          <td>{{ data.city }}</td>
+          <td>{{ data.country }}</td>
+          <td>{{ data.status }}</td>
+          <td>
+            <a [routerLink]="['/cases-edit/', data._id]">
+              <i class="far fa-edit"></i>
+            </a>
+          </td>
+          <td>
+            <a [routerLink]="['/']">
+              <i class="far fa-trash-alt"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
