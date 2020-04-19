@@ -22,21 +22,23 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class CasesEditComponent implements OnInit {
 
   casesForm: FormGroup;
-  name: '';
-  gender: '';
+  _id = '';
+  name = '';
+  gender = '';
   age: number = null;
-  address: '';
-  city: '';
-  country: '';
+  address = '';
+  city = '';
+  country = '';
   status: '';
   statusList = ['Positive', 'Dead', 'Recovered'];
   genderList = ['Male', 'Female'];
   isLoadingResults = false;
   matcher = new MyErrorStateMatcher();
 
-  constructor(private router:Router, private flashMessageService:FlashMessagesService, private caseService:CaseService, private formBuilder:FormBuilder) { }
+  constructor(private route:ActivatedRoute,private router:Router, private flashMessageService:FlashMessagesService, private caseService:CaseService, private formBuilder:FormBuilder) { }
 
   ngOnInit(): void {
+    this.getCasesById(this.route.snapshot.params['id']);
     this.casesForm = this.formBuilder.group({
       name: [null, Validators.required],
       gender: [null, Validators.required],
@@ -48,17 +50,33 @@ export class CasesEditComponent implements OnInit {
     });
   }
 
-  onEditCaseSubmit() {
+  getCasesById(id: any) {
+    this.caseService.getCase(id)
+      .subscribe((data: any) => {
+        this._id = data._id;
+        this.casesForm.setValue({
+          name: data.name,
+          gender: data.gender,
+          age: data.age,
+          address: data.address,
+          city: data.city,
+          country: data.country,
+          status: data.status
+        });
+      });
+  }
+
+  onFormSubmit() {
+    //console.log(this.casesForm.value);
     this.isLoadingResults = true;
-    this.caseService.updateCase(this.casesForm.value)
+    this.caseService.updateCase(this._id, this.casesForm.value)
       .subscribe((res: any) => {
-        const id = res._id;
-        this.isLoadingResults = false;
+        let id = res._id;
         this.router.navigate(['/cases-details', id]);
-      }, (err: any) => {
+      }, (err) => {
         console.log(err);
         this.isLoadingResults = false;
-      });
+      })
   }
 
 }

@@ -43,23 +43,30 @@ export class CaseService {
     return this.httpClient.get<Cases>(url)
   }
 
-  // Add Cases
-  addCases(cases: Cases): Observable<Cases> {
+  // Add Case
+  addCase(cases: Cases): Observable<Cases> {
     return this.httpClient.post<Cases>(`${apiUrl}`, cases, httpOptions);
   }
 
   // Update Case
-  updateCase(data): Observable<any> {
-    return this.httpClient.put(apiUrl, data, httpOptions)
+  // updateCase(data): Observable<any> {
+  //   return this.httpClient.put(apiUrl, data, httpOptions)
+  //     .pipe(
+  //       catchError(this.handleError)
+  //     );
+  // }
+  updateCase(id: string,cases: Cases): Observable<any> {
+    const url = `${apiUrl}/${id}`
+    return this.httpClient.put<Cases>(url, cases, httpOptions)
       .pipe(
         catchError(this.handleError)
       );
   }
 
-  // Delets Case
+  // Delete Case
   deleteCase(id: string): Observable<{}> {
     const url = `${apiUrl}/${id}`;
-    return this.httpClient.delete(url,httpOptions)
+    return this.httpClient.delete<Cases>(url,httpOptions)
       .pipe(
         catchError(this.handleError)
       );

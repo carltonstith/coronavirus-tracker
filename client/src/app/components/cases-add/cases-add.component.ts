@@ -48,7 +48,7 @@ export class CasesAddComponent implements OnInit {
 
   onAddCaseSubmit() {
     this.isLoadingResults = true;
-    this.caseService.addCases(this.casesForm.value)
+    this.caseService.addCase(this.casesForm.value)
       .subscribe((res: any) => {
         const id = res._id;
         this.isLoadingResults = false;

@@ -30,13 +30,25 @@ export class CasesDetailsComponent implements OnInit {
     //debugger
   }
 
-  getCaseDetails(id) {
+  getCaseDetails(id: string) {
     this.caseService.getCase(id)
-      .subscribe(data => {
+      .subscribe((data:any) => {
         this.data = data;
         console.log(data);
         this.isLoadingResults = false;
       });
+  }
+
+  deleteCase(id:any) {
+    this.isLoadingResults = true;
+    this.caseService.deleteCase(id)
+      .subscribe(res => {
+        this.isLoadingResults = false;
+        this.router.navigate(['/cases']);
+      }, (err) => {
+        console.log(err);
+        this.isLoadingResults = false;
+      })
   }
 
 }
