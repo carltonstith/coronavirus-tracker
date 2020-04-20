@@ -1,5 +1,8 @@
 <div class="container">
   <h2>Edit case</h2>
+  <div class="loading spinner-boarder text-success" *ngIf="isLoadingResults">
+    <span class="sr-only">Loading...</span>
+  </div>
   <div>
     <form [formGroup]="casesForm" (ngSubmit)="onFormSubmit()">
       <div class="form-group">

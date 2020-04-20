@@ -46,4 +46,35 @@ router.delete('/:id', function(req, res, next) {
   });
 });
 
+// Get Statistics
+router.get('/daily/:status', function(req, res, next) {
+  //res.send('Stats')
+  Cases.aggregate([
+    {
+      $match: { status: req.params.status }
+    },
+    {
+      $group: {
+        _id: {
+          date: {
+            $dateToString: {
+              format: "%m-%d-%Y",
+              date: "$updated"
+            }
+          }
+        },
+        count: {
+          $sum: 1
+        }
+      }
+    },
+    {
+      $sort: { _id: 1 }
+    }
+  ], function (err, cases) {
+    if(err) return next(err);
+    res.json(cases);
+  })
+})
+
 module.exports = router;

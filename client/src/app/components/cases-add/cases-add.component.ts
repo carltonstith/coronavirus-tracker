@@ -27,7 +27,7 @@ export class CasesAddComponent implements OnInit {
   city: '';
   country: '';
   status: '';
-  statusList = ['Positive', 'Dead', 'Recovered'];
+  statusList = ['Confirmed', 'Dead', 'Recovered'];
   genderList = ['Male', 'Female'];
   isLoadingResults = false;
   matcher = new MyErrorStateMatcher();

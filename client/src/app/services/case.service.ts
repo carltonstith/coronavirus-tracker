@@ -3,6 +3,7 @@ import { Observable, of, throwError, from } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
 import { Cases } from '../cases';
+import { Statistic } from '../statistics';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -48,13 +49,6 @@ export class CaseService {
     return this.httpClient.post<Cases>(`${apiUrl}`, cases, httpOptions);
   }
 
-  // Update Case
-  // updateCase(data): Observable<any> {
-  //   return this.httpClient.put(apiUrl, data, httpOptions)
-  //     .pipe(
-  //       catchError(this.handleError)
-  //     );
-  // }
   updateCase(id: string,cases: Cases): Observable<any> {
     const url = `${apiUrl}/${id}`
     return this.httpClient.put<Cases>(url, cases, httpOptions)
@@ -69,6 +63,16 @@ export class CaseService {
     return this.httpClient.delete<Cases>(url,httpOptions)
       .pipe(
         catchError(this.handleError)
+      );
+  }
+
+  // Get Statistic
+  getStatistic(status: string): Observable<Statistic> {
+    const url = `${apiUrl}/daily/${status}`;
+    return this.httpClient.get<Statistic>(url)
+      .pipe(
+        tap(_ => console.log(`Fetched statistic status=${status}`)),
+        catchError(this.handleError<Statistic>(`getStatistic status=${status}`))
       );
   }
 }
