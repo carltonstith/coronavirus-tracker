@@ -28,7 +28,17 @@ export class DashboardComponent implements OnInit {
       //console.log(data.response)
       let output = '';
       data.response.forEach(function(statistics) {
-        output += `<li>Country: ${statistics.country} | Total Cases: ${statistics.cases.total}, New: ${statistics.cases.new}, Active: ${statistics.cases.active}, Critical: ${statistics.cases.critical}, Recovered: ${statistics.cases.recovered} | Deaths New: ${statistics.deaths.new}, Total: ${statistics.deaths.total} </li><hr>
+        output += `
+        <tr>
+        <td>${statistics.country}</td>
+        <td>${statistics.cases.total}</td>
+        <td>${statistics.cases.new}</td>
+        <td>${statistics.cases.active}</td>
+        <td>${statistics.cases.critical}</td>
+        <td>${statistics.cases.recovered}</td>
+        <td>${statistics.deaths.new}</td>
+        <td>${statistics.deaths.total} </td>
+        </tr>
         `
       });
       document.getElementById('output').innerHTML = output;

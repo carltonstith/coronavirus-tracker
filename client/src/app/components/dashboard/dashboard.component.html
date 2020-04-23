@@ -1,5 +1,26 @@
 <div class="dashboard-container">
-  <h2>Novel Coronavirus List</h2>
-  <button id="btn" class="btn-success">Get API Data</button>
-  <div id="output"></div>
+  <h2>Coronavirus Cases By Country</h2>
+  <!-- <button id="btn" class="btn-success">Get API Data</button> -->
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Country</th>
+        <th>Total Cases</th>
+        <th>New Cases</th>
+        <th>Active Cases</th>
+        <th>Critical Cases</th>
+        <th>Recovered Cases</th>
+        <th>Total New Deaths</th>
+        <th>Total Deaths</th>
+      </tr>
+    </thead>
+    <tbody id="output">
+      <!-- <tr>
+        <td>{{ response.country }}</td>
+      </tr> -->
+    </tbody>
+  </table>
+
+  <!-- <div id="output"></div> -->
 </div>
