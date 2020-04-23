@@ -22,15 +22,16 @@ export class DashboardComponent implements OnInit {
       }
     })
     .then(function(res) {
+      //console.log(res)
       return res.json();
     })
     .then(function(data) {
-      //console.log(data.response)
+      console.log(data.response)
       let output = '';
       data.response.forEach(function(statistics) {
         output += `
         <tr>
-        <td>${statistics.country}</td>
+        <td> ${statistics.country}</td>
         <td>${statistics.cases.total}</td>
         <td>${statistics.cases.new}</td>
         <td>${statistics.cases.active}</td>
