@@ -28,13 +28,13 @@ From root, run `nodemon` for a backend server. Navigate to `localhost:3000/` for
 ## Terminal 
 Open 3 tabs in your terminal. 
 
-* Tab 1: from the project root, type `nodemon`
-* Tab 2: Use this to run mongodb.
+* Tab 1: Use this tab to run Nodemon. From the project root, type `nodemon`
+* Tab 2: Use this tab to run mongodb.
 ** Type `mongo` to start the shell from the folder within your system root folder. Type `cd /` to navigative to your root folder location of MongoDB on your system, for instance).
 ** `show dbs` : Show databases
 ** `use coronavirus-tracker` : Use your project database
 ** `show collections` : Show the database tables
-* Tab 3: Run the client folder. Type `ng serve` for a dev server.
+* Tab 3: Use this tab to run the Angular application from the client folder. Type `ng serve` for a dev server.
 
 ## Front-End Development server
 From the client folder, run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

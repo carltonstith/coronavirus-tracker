@@ -47,6 +47,7 @@ require('./config/passport')(passport);
 
 app.use('/users', users);
 app.use('/cases', cases);
+app.use('/daily/', cases);
 
 // Index Route
 app.get('/', (req, res) => {
