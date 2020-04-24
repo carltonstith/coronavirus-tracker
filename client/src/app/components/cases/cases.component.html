@@ -30,17 +30,12 @@
           <td>{{ data.address }}</td>
           <td>{{ data.city }}</td>
           <td>{{ data.country }}</td>
-          <td>{{ data.status }}</td>
+          <td>{{ data.status | uppercase }}</td>
           <td>
             <a [routerLink]="['/cases-details/', data._id]">
               <i class="fas fa-info"></i>
             </a>
           </td>
-          <!-- <td>
-            <a [routerLink]="['/']">
-              <i class="far fa-trash-alt"></i>
-            </a>
-          </td> -->
         </tr>
       </tbody>
     </table>

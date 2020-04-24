@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit {
       data.response.forEach(function(statistics) {
         output += `
         <tr>
-        <td> ${statistics.country}</td>
+        <td>${statistics.country}</td>
         <td>${statistics.cases.total}</td>
         <td>${statistics.cases.new}</td>
         <td>${statistics.cases.active}</td>

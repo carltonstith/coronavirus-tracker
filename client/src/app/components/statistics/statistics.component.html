@@ -1,34 +1,9 @@
-<div class="container">
+<!-- <div class="container">
   <h2>Statistics</h2>
-  <div class="loading spinner-boarder text-success" *ngIf="isLoadingResults">
-    <span class="sr-only">Loading...</span>
+  <div *ngIf="chart">
+    <canvas id="canvas">{{ chart }}</canvas>
   </div>
-  <div class="btn btn-secondary">
-    <a class="btn btn-secondary" [routerLink]="['/cases']" role="button">List<i class="far fa-edit"></i></a>
-  </div>
-  <form [formGroup]="checkboxGroupForm">
-    <div class="btn-group btn-group-toggle">
-      <label class="btn-primary" ngbButtonLabel>
-        <input type="checkbox" formControlName="confirmed" ngbButton> Confirmed
-      </label>
-      <label class="btn-primary" ngbButtonLabel>
-        <input type="checkbox" formControlName="dead" ngbButton> Dead
-      </label>
-      <label class="btn-primary" ngbButtonLabel>
-        <input type="checkbox" formControlName="recovered" ngbButton> Recovered
-      </label>
-    </div>
-  </form>
-  <hr>
-  <pre>{{checkboxGroupForm.value | json}}</pre>
-  <div style="display:block">
-    <canvas baseChart
-      [datasets]="barChartData"
-      [labels]="barChartLabels"
-      [options]="barChartOptions"
-      [plugins]="barChartPlugins"
-      [legend]="barChartLegend"
-      [chartType]="barChartType">
-    </canvas>
-  </div>
+</div> -->
+<div >
+  <canvas id="canvas">{{ chart }}</canvas>
 </div>

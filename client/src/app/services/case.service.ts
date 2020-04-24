@@ -75,4 +75,20 @@ export class CaseService {
         catchError(this.handleError<Statistic>(`getStatistic status=${status}`))
       );
   }
+
+  //Get Coronavirus data for Statistics
+  dailyCoronavirusStats() {
+    return this.httpClient.get('https://covid-193.p.rapidapi.com/statistics', {
+      'headers': {
+        'x-rapidapi-host': 'covid-193.p.rapidapi.com',
+        'x-rapidapi-key': '2ee3b3466dmshb7ce35c8436ac7fp1659fajsn31deba5949a2'
+      }
+    })
+    .pipe(map(result => result));
+  }
+
+  dailyForecast() {
+    return this.httpClient.get("http://samples.openweathermap.org/data/2.5/history/city?q=Warren,OH&appid=b6907d289e10d714a6e88b30761fae22")
+      .pipe(map(result => result))
+  }
 }
