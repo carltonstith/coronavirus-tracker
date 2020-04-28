@@ -12,11 +12,11 @@ export class CasesDetailsComponent implements OnInit {
 
   data: Cases = {
     _id: '',
-    name: '',
+    first_name: '',
+    last_name: '',
     gender: '',
     age: null,
-    address: '',
-    city: '',
+    email: '',
     country: '',
     status: '',
     updated: null

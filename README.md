@@ -34,6 +34,7 @@ Open 3 tabs in your terminal.
 ** `show dbs` : Show databases
 ** `use coronavirus-tracker` : Use your project database
 ** `show collections` : Show the database tables
+** `db.cases.deleteMany({});`: To drop documents in the Cases collection
 * Tab 3: Use this tab to run the Angular application from the client folder. Type `ng serve` for a dev server.
 
 ## Front-End Development server

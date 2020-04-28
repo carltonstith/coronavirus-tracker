@@ -1,10 +1,10 @@
 export class Cases {
   _id: string;
-  name: string;
+  first_name: string;
+  last_name: string;
   gender: string;
   age: number;
-  address: string;
-  city: string;
+  email: string;
   country: string;
   status: string;
   updated: Date;

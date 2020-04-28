@@ -2,7 +2,11 @@ const mongoose = require('mongoose');
 
 // Case Schema
 const CasesSchema = mongoose.Schema({
-  name: {
+  first_name: {
+    type: String,
+    required: true
+  },
+  last_name: {
     type: String,
     required: true
   },
@@ -14,11 +18,7 @@ const CasesSchema = mongoose.Schema({
     type: Number,
     required: true
   },
-  address: {
-    type: String,
-    required: true
-  },
-  city: {
+  email: {
     type: String,
     required: true
   },

@@ -2,9 +2,48 @@
   <h2>Add a case</h2>
   <div>
     <form [formGroup]="casesForm" (ngSubmit)="onAddCaseSubmit()">
-      <div class="form-group"></div>
-
       <div class="form-group">
+        <label>First Name</label>
+        <input type="text" class="form-control" placeholder="First Name" [(ngModel)]="first_name" formControlName="first_name">
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" class="form-control" placeholder="Last Name" [(ngModel)]="last_name" formControlName="last_name">
+      </div>
+      <div class="form-group">
+        <label>Gender</label>
+        <select formControlName="gender">
+          <option *ngFor="let gl of genderList" [value]="gl">
+            {{ gl }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Age</label>
+        <input type="number" class="form-control" placeholder="Age" [(ngModel)]="age" formControlName="age">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" class="form-control" placeholder="Email" [(ngModel)]="email" formControlName="email">
+      </div>
+      <div class="form-group">
+        <label>Country</label>
+        <select formControlName="country">
+          <option *ngFor="let cl of countryList" [value]="cl">
+            {{ cl }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Status</label>
+        <select formControlName="status">
+          <option *ngFor="let sl of statusList" [value]="sl">
+            {{ sl }}
+          </option>
+        </select>
+      </div>
+
+      <!-- <div class="form-group">
         <label>Name</label>
         <input type="text" class="form-control" placeholder="Name" [(ngModel)]="name" formControlName="name">
       </div>
@@ -43,7 +82,7 @@
             {{ sl }}
           </option>
         </select>
-      </div>
+      </div> -->
       <input type="submit" value="Add" class="btn btn-primary">
     </form>
   </div>

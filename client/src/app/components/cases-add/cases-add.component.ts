@@ -20,11 +20,12 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class CasesAddComponent implements OnInit {
   casesForm: FormGroup;
-  name: '';
+  first_name: '';
+  last_name: '';
   gender: '';
   age: number = null;
-  address: '';
-  city: '';
+  email: '';
+  country: '';
   countryList = [
     'AF = Afghanistan',
     'AL = Albania',
@@ -281,11 +282,11 @@ export class CasesAddComponent implements OnInit {
 
   ngOnInit(): void {
     this.casesForm = this.formBuilder.group({
-      name: [null, Validators.required],
+      first_name: [null, Validators.required],
+      last_name: [null, Validators.required],
       gender: [null, Validators.required],
       age: [null, Validators.required],
-      address: [null, Validators.required],
-      city: [null, Validators.required],
+      email: [null, Validators.required],
       country: [null, Validators.required],
       status: [null, Validators.required]
     });

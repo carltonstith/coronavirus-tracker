@@ -22,14 +22,15 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class CasesEditComponent implements OnInit {
 
   casesForm: FormGroup;
-  _id = '';
-  name = '';
-  gender = '';
-  age: number = null;
-  address = '';
-  city = '';
-  country = '';
+  _id: '';
+  first_name: '';
+  last_name: '';
+  gender: '';
+  age: null;
+  email: '';
+  country: '';
   status: '';
+  updated: null;
   statusList = ['Positive', 'Dead', 'Recovered'];
   genderList = ['Male', 'Female'];
   isLoadingResults = false;
@@ -40,11 +41,11 @@ export class CasesEditComponent implements OnInit {
   ngOnInit(): void {
     this.getCasesById(this.route.snapshot.params['id']);
     this.casesForm = this.formBuilder.group({
-      name: [null, Validators.required],
+      first_name: [null, Validators.required],
+      last_name: [null, Validators.required],
       gender: [null, Validators.required],
       age: [null, Validators.required],
-      address: [null, Validators.required],
-      city: [null, Validators.required],
+      email: [null, Validators.required],
       country: [null, Validators.required],
       status: [null, Validators.required]
     });
@@ -55,11 +56,11 @@ export class CasesEditComponent implements OnInit {
       .subscribe((data: any) => {
         this._id = data._id;
         this.casesForm.setValue({
-          name: data.name,
+          first_name: data.first_name,
+          last_name: data.last_name,
           gender: data.gender,
           age: data.age,
-          address: data.address,
-          city: data.city,
+          email: data.email,
           country: data.country,
           status: data.status
         });
